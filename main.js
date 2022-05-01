@@ -1,4 +1,5 @@
 var jogador, vencedor = null,
+    img = document.getElementById('kono'),
     jogadorSelecionado = document.getElementById('jogador-selecionado'), 
     vencedorSelecionado = document.getElementById('vencedor-selecionado')
 
@@ -61,8 +62,8 @@ function checarVencedor(){
         mudarVencedor(quadrado1)
     }
     
-    if(checarSequencia(quadrado3, quadrado4, quadrado6)){
-        mudarCorQuadrado(quadrado3, quadrado4, quadrado6)
+    if(checarSequencia(quadrado3, quadrado5, quadrado6)){
+        mudarCorQuadrado(quadrado3, quadrado5, quadrado6)
         mudarVencedor(quadrado3)
     }
     
@@ -85,6 +86,11 @@ function checarVencedor(){
 function mudarVencedor(quadrado){
     vencedor = quadrado.innerHTML
     vencedorSelecionado.innerHTML = vencedor
+    if(vencedor === 'X'){
+        img.src = "assets/dio.png"
+    }else{
+        img.src = "assets/jojo.png"
+    }
 }
 
 function checarSequencia(quad1, quad2, quad3){
@@ -102,6 +108,7 @@ function mudarCorQuadrado(quad1, quad2, quad3){
 function reiniciarVencedor(){
     vencedor = null
     vencedorSelecionado.innerHTML = ''
+    kono.src= ''
 
     for(var i = 1; i <= 9; i++  ){
         var quadrado = document.getElementById(i)
